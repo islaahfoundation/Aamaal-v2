@@ -1,0 +1,66 @@
+:root {
+  /* Brand Palette — Deep Emerald & Warm Gold */
+  --color-primary: #0f5132;
+  --color-primary-light: #198754;
+  --color-primary-soft: #e8f5e9;
+  --color-accent: #d4af37;
+  --color-accent-soft: #fef9e7;
+
+  /* Surfaces & Backgrounds */
+  --bg-app: #f8f9fa;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.88);
+
+  /* Text Hierarchy */
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-on-primary: #ffffff;
+
+  /* Semantic Status Colours */
+  --color-success: #2e7d32;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --border-color: #e2e8f0;
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-arabic: 'Amiri', serif;
+  --arabic-font-scale: 1;
+
+  /* Layout & Capacitor Safe Areas */
+  --header-height: 60px;
+  --bottom-nav-height: 68px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --max-mobile-width: 480px;
+
+  /* Radii & Shadows */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 81, 50, 0.08);
+}
+
+/* Dark Theme Overrides (Controlled by Screen 124: ThemeSelector.jsx) */
+[data-theme='dark'] {
+  --color-primary: #22c55e;
+  --color-primary-light: #4ade80;
+  --color-primary-soft: rgba(34, 197, 94, 0.14);
+  --color-accent: #facc15;
+  --color-accent-soft: rgba(250, 204, 21, 0.12);
+
+  --bg-app: #0b1310;
+  --bg-surface: #131f1a;
+  --bg-surface-elevated: #1c2d26;
+  --bg-glass: rgba(19, 31, 26, 0.9);
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --text-on-primary: #081c15;
+  --border-color: #23352d;
+}
