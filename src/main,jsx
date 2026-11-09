@@ -1,10 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import './styles/global.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const PROFILES = [
+  { id: '1', name: 'Ahmad (Self)', role: 'Parent' },
+  { id: '2', name: 'Fatima', role: 'Spouse' },
+  { id: '3', name: 'Zayd', role: 'Child' },
+];
+
+function App() {
+  const [activeId, setActiveId] = useState('1');
+  const [counts, setCounts] = useState({ '1': 313, '2': 150, '3': 45 });
+  const active = PROFILES.find((p) => p.id === activeId);
+  const total = counts[activeId] || 0;
+
+  const addCount = (amt) => {
+    setCounts((prev) => ({ ...prev, [activeId]: (prev[activeId] || 0) + amt }));
+  };
+
+  return (
+    <div style={{ maxWidth: 460, minHeight: '100vh', margin: '0 auto', background: '#f8f9fa', padding: 16 }}>
+      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+        <strong style={{ color: '#0F5132', fontSize: 18 }}>Aamaal • أعمال</strong>
+        <select
+          value={activeId}
+          onChange={(e) => setActiveId(e.target.value)}
+          style={{ padding: '6px 12px', borderRadius: 999, background: '#e8f5e9', color: '#0F5132', fontWeight: 700 }}
+        >
+          {PROFILES.map((p) => (
+            <option key={p.id} value={p.id}>{p.name} ({p.role})</option>
+          ))}
+        </select>
+      </header>
+
+      <div style={{ background: '#0F5132', color: '#fff', padding: 18, borderRadius: 14, marginBottom: 16 }}>
+        <div style={{ fontSize: 12, opacity: 0.85 }}>ACTIVE FAMILY PROFILE</div>
+        <h2 style={{ margin: '6px 0 4px' }}>{active.name}</h2>
+        <div style={{ fontSize: 13 }}>Role: {active.role} • Independent Aamaal Ledger</div>
+      </div>
+
+      <div style={{ background: '#fff', padding: 18, borderRadius: 14, border: '1px solid #e2e8f0' }}>
+        <h3 style={{ margin: '0 0 8px' }}>Daily Astaghfirullah Target</h3>
+        <div style={{ fontSize: 28, fontWeight: 800, color: '#0F5132', marginBottom: 14 }}>
+          {total} <span style={{ fontSize: 16, color: '#718096' }}>/ 313</span>
+        </div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button onClick={() => addCount(150)} style={{ flex: 1, padding: 10, borderRadius: 8, border: 'none', background: '#e8f5e9', color: '#0F5132', fontWeight: 700, cursor: 'pointer' }}>
+            +150 Morning
+          </button>
+          <button onClick={() => addCount(163)} style={{ flex: 1, padding: 10, borderRadius: 8, border: 'none', background: '#0F5132', color: '#fff', fontWeight: 700, cursor: 'pointer' }}>
+            +163 Evening
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
